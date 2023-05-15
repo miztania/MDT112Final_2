@@ -35,9 +35,13 @@ class Program{
         float countTDrink = tDrink;
         float hourCount = 0;
 
+        bool isOverFlow = false;
+
          while(true){
+                //  Console.WriteLine("Hour : " + hourCount);
 
                 if(vCurrent <= 0 ){
+            
                     Console.WriteLine("Not Enough Water");
                     break;
                 }
@@ -47,26 +51,38 @@ class Program{
                 }
 
                
-                 if(hourCount%tDrink == 0){
-                    Console.WriteLine("Drink");
+                 if(hourCount%tDrink == 0 && hourCount != 0){
+                  //  Console.WriteLine("Drink");
                        vCurrent -= vDrink;
                  }
-                 if(hourCount%tFill == 0){
-                    Console.WriteLine("Fill");
-                    vCurrent += tFill;
+                 if(hourCount%tFill == 0 && hourCount != 0){
+                   // Console.WriteLine("Fill");
+                    vCurrent += vFill;
                     if(vCurrent > vMax){
                           vCurrent = vMax;
+                          isOverFlow = true;
                     }
                 }
                 //Console.WriteLine("count Drink : "+countTDrink);
                 //Console.WriteLine("count Fill : "+countTFIll);
-                Console.WriteLine("Hour : " + hourCount);
-                Console.WriteLine("VCurrent : "+vCurrent);
+               
+               // Console.WriteLine("VCurrent : "+vCurrent);
                 countTDrink += tDrink;
                 countTFIll += tFill;
                 hourCount++;
           
          
+         }
+
+         if(vCurrent > 0){
+            if(vCurrent < 0.001){
+                vCurrent = 0;
+            }
+            Console.WriteLine("Enough Water, " + vCurrent + " left" );
+         }
+
+         if(isOverFlow){
+            Console.WriteLine("Overflow Water");
          }
 
    
