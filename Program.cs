@@ -3,7 +3,7 @@
 class Program{
     static void Main(string[] args){
 
-      // Exam1Water();
+       Exam1Water();
        Exam2Money();
 
     }
@@ -124,7 +124,17 @@ class Program{
                 acc.balance2 += num;
             }else if(count == 3){
                 acc.balance3 += num;
+            }else{
+                if(acc.balance1 > num){
+                    acc.balance1 -= num;
+                }else if(acc.balance2 > num){
+                    acc.balance2 -= num;
+                }else if(acc.balance3 > num){
+                    acc.balance3 -= num;
+                }
             }
+
+           
 
             count++;
             
