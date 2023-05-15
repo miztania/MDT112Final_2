@@ -3,11 +3,13 @@
 class Program{
     static void Main(string[] args){
 
-       Exam1Water();
+      // Exam1Water();
+       Exam2Money();
 
     }
 
     static void Exam1Water(){
+        
          Console.WriteLine("Enter Vmax : ");
         float vMax = float.Parse(Console.ReadLine());
 
@@ -91,4 +93,44 @@ class Program{
 
         
     }
+
+    struct Account{
+        public float balance1;
+        public float balance2;
+        public float balance3;
+        public float left;
+
+        public Account(float balance1,float balance2,float balance3){
+            this.balance1 = balance1;
+            this.balance2 = balance2;
+            this.balance3 = balance3;
+        }
+    }
+    static void Exam2Money(){
+
+        Account acc = new Account(0,0,0);
+        
+        int count = 1;
+        while(true){
+            float num = float.Parse(Console.ReadLine());
+
+            if(num <= 0){
+                break;
+            }
+
+            if(count == 1){
+                acc.balance1 += num;
+            }else if(count == 2){
+                acc.balance2 += num;
+            }else if(count == 3){
+                acc.balance3 += num;
+            }
+
+            count++;
+            
+        }
+
+        Console.WriteLine("Balance 1 : {0}, Balance 2 : {1}, Balance 3 : {2}",acc.balance1,acc.balance2,acc.balance3);
+    }
 }
+
